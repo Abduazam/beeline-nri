@@ -1,0 +1,205 @@
+:root {
+    --border-grey: #d8e1e1;
+    --table-bg: hsla(220,9%,46%,.05);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/**
+ * Rich editor buttons css.
+ */
+.trix-button-group--block-tools,
+.trix-button-group--file-tools {
+    display: none!important;
+}
+
+/**
+ * Inner sidebar css.
+ */
+#inner-sidebar {
+    position: fixed;
+    z-index: 99;
+    transition: .3s ease;
+    width: 65px;
+}
+#inner-sidebar:hover {
+    width: auto!important;
+}
+#inner-sidebar ul li a span {
+    color: rgba(230,236,236,.75);
+    white-space: nowrap;
+}
+#inner-sidebar ul li a.active span {
+    color: #fff;
+}
+#inner-sidebar ul li a:hover span {
+    color: #fff;
+}
+
+/**
+ * Own table css.
+ */
+.own-table thead tr {
+    border: 1px solid var(--border-grey);
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    background: var(--table-bg);
+}
+.own-table tbody tr {
+    border: 1px solid var(--border-grey);
+    border-top: none;
+}
+.own-table tbody tr:last-child {
+    border-bottom-left-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+}
+.own-table thead tr th,
+.own-table tbody tr td {
+    border-right: 1px solid var(--border-grey);
+    padding: 5px 12px;
+    font-size: 14px;
+}
+.own-table thead tr th i {
+    margin-top: 0.6px;
+}
+.own-table thead tr th:last-child,
+.own-table tbody tr td:last-child {
+    border: none;
+}
+.border-bottom-radius-none {
+    border-bottom-left-radius: 0!important;
+    border-bottom-right-radius: 0!important;
+}
+.choose-row {
+    cursor: pointer;
+}
+.choose-row:hover {
+    background: #f2f2f2;
+}
+
+.scrollable-tbody {
+    overflow-y: auto;
+}
+.scrollable-tbody::-webkit-scrollbar {
+    width: 0; /* Adjust as needed */
+    background-color: transparent;
+}
+.scrollable-tbody::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+/**
+ * Own button css.
+ */
+.btn-small {
+    padding: 1px 7px;
+}
+.btn-small i {
+    font-size: 13px;
+}
+.btn-pagination {
+    padding: 3px 10px;
+    font-size: 14px;
+    border: none;
+}
+.bg-corporate-dark.js-bs-tooltip-enabled {
+    font-size: 13px!important;
+}
+
+/**
+ * Own form css.
+ */
+.form-border-radius {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    overflow: hidden;
+}
+
+/**
+ * Own select2 css.
+ */
+.filter-select {
+    border: 1px solid #d8dde5;
+    color: #666;
+}
+
+/**
+ * Own button css.
+ */
+.btn-cancel {
+    background: white;
+    color: rgb(31 41 55/1);
+    border: 1px solid #e5e7eb;
+    padding-inline: 20px;
+}
+.btn-cancel:hover {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+}
+
+/**
+ * Own select2 css.
+ */
+.select2-container--default .select2-selection--multiple,
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+    border-color: #d8e1e1;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__rendered {
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 3px 7px;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background: #2facb2;
+    color: #fff;
+    border-color: transparent;
+    font-size: 14px;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    color: #fff;
+}
+/*.select2-container--default .select2-results>.select2-results__options {*/
+/*    min-height: 300px;*/
+/*}*/
+.select2-results__option {
+    font-size: 14px;
+}
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background: #2facb2;
+}
+
+/**
+ * Disabled number input type arrows
+ */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/**
+ * Own notification block css.
+ */
+.notification-block {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+/**
+ * Own media css.
+ */
+@media (min-width: 1370px) {
+    #page-container.main-content-boxed>#main-container .content, #page-container.main-content-boxed>#page-footer .content, #page-container.main-content-boxed>#page-header .content, #page-container.main-content-boxed>#page-header .content-header {
+        max-width: none!important;
+    }
+}
