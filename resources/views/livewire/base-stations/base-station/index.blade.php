@@ -98,6 +98,12 @@
                                     <x-action.create route="{{ route('base-stations.base-station.create') }}"/>
                                 </div>
                             @endcan
+                            @if(auth()->user()->hasRole('admin'))
+                                <div class="col-2 pe-0">
+                                    <label class="form-label w-100"></label>
+                                    <livewire:base-stations.base-station.delete-by-region />
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -145,4 +151,34 @@
             @endif
         </div>
     </div>
+
+    <div class="modal fade" style="background: rgba(0, 0, 0, .7)" id="modal-process" tabindex="-1" role="dialog" aria-labelledby="modal-process" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="block block-rounded shadow-none mb-0">
+                    <div class="block-content fs-sm">
+                        <div class="progress push" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="height: 35px;">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger py-3" style="width: 100%;">
+                                <span class="progress-bar-label fw-semibold">Удаление базовых станций</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+@push('scripts')
+    <script>
+        window.addEventListener('inProcess', function () {
+            setTimeout(function () {
+                document.getElementById('modal-process').classList.add('show', 'd-block');
+            }, 500);
+        });
+
+        window.addEventListener('endProcess', function () {
+            document.getElementById('modal-process').classList.remove('show', 'd-block');
+        });
+    </script>
+@endpush
