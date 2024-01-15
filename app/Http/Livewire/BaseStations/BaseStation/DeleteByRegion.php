@@ -21,7 +21,7 @@ class DeleteByRegion extends Component
     public function delete(): void
     {
         if (!is_null($this->region_id)) {
-            Position::where('region_id', $this->region_id)->delete();
+            Position::where('region_id', $this->region_id)->forceDelete();
             $this->dispatchSuccess('create', 'creating-succeed', "Удаление завершено");
         } else {
             $this->dispatchBrowserEvent('dispatch-event', [
