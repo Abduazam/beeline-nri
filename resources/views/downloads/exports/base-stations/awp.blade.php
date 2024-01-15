@@ -254,7 +254,7 @@
         <tr>
             <td style="border: 1px solid black; text-align: left; font-size: 9px; width: 200px;">{{ $sector->sector_number }}</td>
             <td style="border: 1px solid black; text-align: left; font-size: 9px; width: 200px;">{{ $sector->cell_id }}</td>
-            <td style="border: 1px solid black; text-align: left; font-size: 9px; width: 200px;">{{ $sector->diapason->technology->name . ' ' . $sector->diapason->band }}</td>
+            <td style="border: 1px solid black; text-align: left; font-size: 9px; width: 200px;">{{ $sector->diapason?->technology->name . ' ' . $sector->diapason?->band }}</td>
             <td style="border: 1px solid black; text-align: left; font-size: 9px; width: 200px;">{{ $sector->title }}</td>
             <td style="border: 1px solid black; text-align: left; font-size: 9px; width: 200px;">{{ $sector->e_node_b_id }}</td>
             <td style="border: 1px solid black; text-align: left; font-size: 9px; width: 200px;">{{ $sector->transceivers }}</td>

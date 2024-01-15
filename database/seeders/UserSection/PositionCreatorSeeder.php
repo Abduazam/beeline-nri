@@ -17,11 +17,18 @@ class PositionCreatorSeeder extends Seeder
     {
         $creatorRole = Role::create(['name' => 'position-creator']);
         $creatorRole->givePermissionTo([
-            'positions section', 'position section', 'create position', 'edit position', 'view position', 'send position', 'delete position', 'restore position', 'force delete position',
-            'base-stations section', 'base-station section', 'create base-station', 'edit base-station', 'view base-station', 'send base-station', 'delete base-station', 'restore base-station', 'force delete base-station',
+            'positions section', 'position section', 'create position', 'edit position', 'view position', 'send position', 'delete position', 'restore position',
+            'base-stations section', 'base-station section', 'create base-station', 'edit base-station', 'view base-station', 'send base-station', 'delete base-station', 'restore base-station'
         ]);
         $acceptorRole = Role::create(['name' => 'position-acceptor']);
         $acceptorRole->givePermissionTo([
+            'positions section', 'position section', 'view position', 'accept position', 'cancel position',
+            'base-stations section', 'base-station section', 'view base-station', 'accept base-station', 'cancel base-station',
+        ]);
+        $creatorAndAcceptorRole = Role::create(['name' => 'position-creator/acceptor']);
+        $creatorAndAcceptorRole->givePermissionTo([
+            'positions section', 'position section', 'create position', 'edit position', 'view position', 'send position', 'delete position', 'restore position',
+            'base-stations section', 'base-station section', 'create base-station', 'edit base-station', 'view base-station', 'send base-station', 'delete base-station', 'restore base-station',
             'positions section', 'position section', 'view position', 'accept position', 'cancel position',
             'base-stations section', 'base-station section', 'view base-station', 'accept base-station', 'cancel base-station',
         ]);

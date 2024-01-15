@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('base_station_applications', function (Blueprint $table) {
             $table->bigInteger('id')->autoIncrement();
-            $table->foreignId('base_station_id')->references('id')->on('base_stations')->onDelete('restrict');
+            $table->foreignId('base_station_id')->references('id')->on('base_stations')->onDelete('cascade');
             $table->foreignId('application_type_id')->references('id')->on('application_types')->onDelete('restrict');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('restrict');
             $table->mediumText('comment')->nullable();

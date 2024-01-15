@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('position_applications', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('position_id')->references('id')->on('positions')->onDelete('restrict');
+            $table->foreignId('position_id')->references('id')->on('positions')->onDelete('cascade');
             $table->foreignId('application_type_id')->references('id')->on('application_types')->onDelete('restrict');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('restrict');
             $table->mediumText('comment')->nullable();

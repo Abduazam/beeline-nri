@@ -23,15 +23,16 @@ class Create extends Component
     public function submitForm()
     {
         $validatedData = $this->validate();
-
-        if ($this->action === 'store') {
-            $service = new CreateService();
-            $service->create($validatedData);
-            return redirect()->route('positions.position.index');
-        } elseif ($this->action === 'archive') {
-            $service = new ArchiveService();
-            $position = $service->archive($validatedData);
-            return redirect()->route('positions.position.edit', $position);
+        if ($validatedData) {
+            if ($this->action === 'store') {
+                $service = new CreateService();
+                $service->create($validatedData);
+                return redirect()->route('positions.position.index');
+            } elseif ($this->action === 'archive') {
+                $service = new ArchiveService();
+                $position = $service->archive($validatedData);
+                return redirect()->route('positions.position.edit', $position);
+            }
         }
     }
 

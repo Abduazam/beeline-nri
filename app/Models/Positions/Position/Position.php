@@ -42,6 +42,8 @@ class Position extends Model
         'state_id',
     ];
 
+    public static bool $skipBoot = false;
+
     /**
      * Generates number for application
      * @return void
@@ -50,15 +52,17 @@ class Position extends Model
     {
         parent::boot();
 
-        static::creating(function ($position) {
-            $latestPosition = self::latest('number')->first();
+        if (!self::$skipBoot) {
+            static::creating(function ($position) {
+                $latestPosition = self::latest('number')->first();
 
-            if ($latestPosition) {
-                $position->number = $latestPosition->number + 1;
-            } else {
-                $position->number = 1;
-            }
-        });
+                if ($latestPosition) {
+                    $position->number = $latestPosition->number + 1;
+                } else {
+                    $position->number = 1;
+                }
+            });
+        }
     }
 
     public function applications(): HasMany

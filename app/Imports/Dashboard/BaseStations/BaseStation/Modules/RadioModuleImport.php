@@ -19,7 +19,8 @@ class RadioModuleImport implements ToModel, WithHeadingRow
             $rru_type = RruType::firstOrCreate(
                 ['title' => $row['tip_rru']],
                 [
-                    'title' => $row['tip_rru']
+                    'title' => $row['tip_rru'],
+                    'model' => $row['tip_rru']
                 ]
             );
 

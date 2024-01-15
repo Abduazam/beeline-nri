@@ -19,7 +19,8 @@ class ModuleControllerImport implements ToModel, WithHeadingRow
             $mu_type = MuType::firstOrCreate(
                 ['title' => $row['tip_mu']],
                 [
-                    'title' => $row['tip_mu']
+                    'title' => $row['tip_mu'],
+                    'model' => $row['tip_mu']
                 ]
             );
 

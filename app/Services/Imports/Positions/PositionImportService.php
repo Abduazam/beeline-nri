@@ -25,6 +25,8 @@ class PositionImportService
 
     public function create(): Position
     {
+        Position::$skipBoot = true;
+
         return Position::firstOrCreate(
             ['number' => $this->position_number],
             [

@@ -160,7 +160,7 @@
                                                             <input value="{{ $diapason->number }}" type="text" class="form-control form-control-sm w-100" readonly>
                                                         </label>
                                                     </td>
-                                                    <td class="text-center">{{ $diapason->diapason->technology->name . ' ' . $diapason->diapason->band }}</td>
+                                                    <td class="text-center">{{ $diapason->diapason->technology?->name . ' ' . $diapason->diapason->band }}</td>
                                                     <td class="text-center">{{ $diapason->controller->name }}</td>
                                                     <td class="text-center">{{ $diapason->controller->address }}</td>
                                                     <td class="text-center">
@@ -826,7 +826,7 @@
                                                     </td>
                                                     <td class="text-center">
                                                         <label for="diapason_id{{ $key }}" >
-                                                            <input value="{{ $sector->diapason->technology->name . ' ' . $sector->diapason->band }}" type="text" class="form-control form-control-sm" id="diapason_id{{ $key }}" name="diapason_id{{ $key }}" disabled>
+                                                            <input value="{{ $sector->diapason?->technology->name . ' ' . $sector->diapason?->band }}" type="text" class="form-control form-control-sm" id="diapason_id{{ $key }}" name="diapason_id{{ $key }}" disabled>
                                                         </label>
                                                     </td>
                                                     <td>
