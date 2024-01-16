@@ -19,7 +19,7 @@ class ArchiveService
     {
         DB::beginTransaction();
         try {
-            if ($application) {
+            if (!is_null($application)) {
                 $application->position->update([
                     'company_id' => $data['application']['position']['company_id'],
                     'place_type_id' => $data['application']['position']['place_type_id'],

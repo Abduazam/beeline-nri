@@ -1784,4 +1784,11 @@
             </div>
         </form>
     </div>
+
+    @if (session('alert'))
+        <div class="alert bg-danger text-white position-fixed mx-10" style="bottom: 100px;">
+            <span class="fs-sm">{!! session('alert') !!}</span>
+            <span class="btn btn-sm btn-alt-danger ms-3" style="cursor: pointer;" onclick="this.parentElement.style.display='none';">&times;</span>
+        </div>
+    @endif
 </div>

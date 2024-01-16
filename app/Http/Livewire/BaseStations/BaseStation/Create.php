@@ -47,7 +47,6 @@ class Create extends Component
     {
         try {
             $validatedData = $this->validate();
-            // dd($validatedData);
 
             if ($this->action === 'store') {
                 $service = new CreateService();
@@ -61,7 +60,18 @@ class Create extends Component
                 return redirect()->route('base-stations.base-station.edit', $base_stations);
             }
         } catch (ValidationException $e) {
-            dd($e);
+            $errorMessages = [];
+
+            // Iterate through error messages and store them in an array
+            foreach ($e->validator->getMessageBag()->all() as $message) {
+                $errorMessages[] = $message;
+            }
+
+            // Concatenate error messages into a single string
+            $errorMessageString = implode("<br>", $errorMessages);
+
+            // Flash an alert message to the session with all error messages
+            return redirect()->back()->with('alert', 'Проверка не удалась: <br>' . $errorMessageString)->withErrors($e->validator->getMessageBag());
         }
     }
 
