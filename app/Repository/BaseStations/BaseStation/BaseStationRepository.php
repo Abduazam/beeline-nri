@@ -5,31 +5,33 @@ namespace App\Repository\BaseStations\BaseStation;
 use App\Models\Area\Region\Region;
 use App\Models\BaseStations\BaseStation\BaseStation;
 use App\Models\Data\ApplicationType\ApplicationType;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\App;
 
 class BaseStationRepository
 {
-    public function getFiltered($search, $per_page, $orderBy, $orderDir)
+    public function getFiltered($search, $per_page, $orderBy, $orderDir): Collection|LengthAwarePaginator|array
     {
         $user = auth()->user();
 
         if ($user->hasRole('admin')) {
             $region_ids = Region::pluck('id')->toArray();
         } else {
-            $region_ids = $user?->branches?->first()?->regions->pluck('id')->toArray();
+            $region_ids = $user->branches->flatMap(function ($branch) {
+                return $branch->regions->pluck('id');
+            })->toArray();
         }
 
-        $base_stations = BaseStation::select('*')
-            ->with('position', 'applications')
+        $base_stations = BaseStation::with('position', 'applications')
+            ->whereHas('position', function ($positionQuery) use ($region_ids) {
+                $positionQuery->whereIn('region_id', $region_ids);
+            })
             ->when($search, function ($query, $search) {
                 return $query->whereHas('position', function ($positionQuery) use ($search) {
                     $positionQuery->where('number', 'like', '%' . $search . '%')
                         ->orWhere('name', 'like', '%' . $search . '%');
                 });
-            })
-            ->whereHas('position', function ($positionQuery) use ($region_ids) {
-                $positionQuery->whereIn('region_id', $region_ids);
             });
 
         $base_stations->orderBy($orderBy, $orderDir);
